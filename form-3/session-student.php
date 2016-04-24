@@ -1,6 +1,7 @@
 <?php
 session_start();
    include('config.php');
+echo $_SESSION['login_user'];
 
 
 if(!isset($_SESSION['login_user'])){

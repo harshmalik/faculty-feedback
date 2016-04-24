@@ -32,7 +32,11 @@
          $error = "Your Login Name or Password is invalid";
       }
    }
+<<<<<<< HEAD
    
+=======
+   echo "$user_check";
+>>>>>>> b98a29a934d7232412c516289bc754c8b3736072
 ?>
 
 <!DOCTYPE html>
