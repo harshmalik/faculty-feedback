@@ -1,7 +1,6 @@
 <?php
 session_start();
    include('config.php');
-echo $_SESSION['login_user'];
 
 if(!isset($_SESSION['login_user'])){
       header("location:log.php");
@@ -22,6 +21,8 @@ if(!isset($_SESSION['login_user'])){
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/form-basic.css">
 
     <!-- Custom CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
@@ -50,17 +51,17 @@ if(!isset($_SESSION['login_user'])){
                 <li>Feedback
                 <ul style="list-style-type:none">
                 <li>
-                    <a href="Insertfeedback.php">Insert</a>
+                    <a href="#">Insert</a>
                 </li>
                 <li>
-                    <a href="Update.html">Update</a>
+                    <a href="#">Update</a>
                 </li>
                 <li>
-                    <a href="Delete.html">Delete</a>
+                    <a href="#">Delete</a>
                 </ul></li>
                 </li>
                 <li>
-                    <a href="Contact_Us.html">Contact</a>
+                    <a href="#">Contact</a>
                 </li>
             </ul>
         </div>
@@ -74,17 +75,75 @@ if(!isset($_SESSION['login_user'])){
                     	<center>
                         	<h1>DTU Feedback System</h1>
                         	<header >
-   								<a href="#a">
+   								<a href="Student_home_page.html">
    									<img src="DTU-logo.jpe" alt="logo" id="logo"/>
    								</a>
    							</header
                     	</center>
                     	<br>
                     	<br>
-                        <p>This is a portal for taking feedback from students about their academics, faculties and any issues which may plague the lives of any of the students in the University.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                    </div>
+                        <form class="form-basic" method="post" action="insertfeedbackdatabase.php">
+
+            <div class="form-title-row">
+                <h1>Teachers Feedback</h1>
+            </div>
+
+            <div class="form-row">
+                <label>
+                    <span>Full Name</span>
+                    <input type="text" name="name">
+                </label>
+            </div>
+
+            <div class="form-row">
+                <label>
+                    <span>Registration No</span>
+                    <input type="text" name="registration-no">
+                </label>
+            </div>
+
+            <div class="form-row">
+                <label>
+                    <span>Semester</span>
+                    <select name="dropdown">
+                        <option>I</option>
+                        <option>II</option>
+                        <option>III</option>
+                        <option>IV</option>
+                        <option>V</option>
+                        <option>VI</option>
+                        <option>VII</option>
+                        <option>VIII</option>
+                    </select>
+                </label>
+            </div>
+                <div class="form-row">
+                <label>
+                    <span>Branch</span>
+                    <input type="text" name="branch">
+                </label>
+            </div>
+            <div class="form-row">
+                <label>
+                    <span>Additional Remarks(if any):</span>
+                    <textarea name="remarks"></textarea>
+                </label>
+            </div>
+    
+            
+
+
+
+            <div class="form-row">
+                <button type="submit">Submit Form</button>
+            </div>
+
+        </form>
+
+                    <br>   
+                    <center>  <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                   </center>
+				   </div>
                 </div>
             </div>
         </div>

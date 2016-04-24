@@ -29,6 +29,7 @@
          header("location:session-student.php");
       }else {
          $error = "Your Login Name or Password is invalid";
+		 echo "$error";
       }
    }
 ?>
@@ -79,9 +80,9 @@
                             <h1>DTU Feedback System Login &amp; Register Forms</h1>
                             <div class="description">
                             	<p>
-	                            	This is a free responsive <strong>"login and register forms"</strong> template made with Bootstrap. 
-	                            	Download it on <a href="http://azmind.com" target="_blank"><strong>AZMIND</strong></a>, 
-	                            	customize and use it as you like!
+	                            	 <strong>Login and Register forms</strong> 
+	                            	 <a href="http://azmind.com" target="_blank"><strong>HHH</strong></a>, 
+	         
                             	</p>
                             </div>
                         </div>
@@ -188,7 +189,7 @@
         			
         			<div class="col-sm-8 col-sm-offset-2">
         				<div class="footer-border"></div>
-        				<p>Made by Anli Zaimi at <a href="http://azmind.com" target="_blank"><strong>AZMIND</strong></a> 
+        				<p>Made by WE3 at <a href="http://azmind.com" target="_blank"><strong>&copy HHH</strong></a> 
         					having a lot of fun. <i class="fa fa-smile-o"></i></p>
         			</div>
         			

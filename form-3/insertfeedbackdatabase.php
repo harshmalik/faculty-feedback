@@ -1,11 +1,49 @@
-<?php
-session_start();
-   include('config.php');
 
-if(!isset($_SESSION['login_user'])){
-      header("location:log.php");
-   }
+<?php
+/*
+Attempt MySQL server connection. Assuming you are running MySQL
+server with default setting (user 'root' with no password)
+*/
+$link = mysqli_connect("localhost", "root", "", "StudentAdmin");
+
+
+/*
+Attempt MySQL server connection. Assuming you are running MySQL
+server with default setting (user 'root' with no password)
+*/
+$link = mysqli_connect("localhost", "root", "", "StudentAdmin");
+// Check connection
+if($link === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}
+ 
+// Escape user inputs for security
+$name = mysqli_real_escape_string($link, $_POST['name']);
+$regno = mysqli_real_escape_string($link, $_POST['registration-no']);
+$semester = mysqli_real_escape_string($link, $_POST['dropdown']);
+$branch = mysqli_real_escape_string($link, $_POST['branch']);
+$comments = mysqli_real_escape_string($link, $_POST['remarks']);
+
+ 
+// attempt insert query execution
+$sql = "INSERT INTO feedback (NAME,Registration_No,Semester, Branch, Comments) VALUES ('$name', '$regno','$semester','$branch','$comments')";
+if(mysqli_query($link, $sql)){
+echo '<script language="javascript">';
+echo 'alert("message successfully sent")';
+echo '</script>';
+
+
+    //header("location:Insertfeedback2.php");
+} else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+}
+ 
+// close connection
+mysqli_close($link);
+
+
 ?>
+/*
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +82,7 @@ if(!isset($_SESSION['login_user'])){
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
+                    <a href="logout.php">
                         Logout
                     </a>
                 </li>
@@ -82,7 +120,7 @@ if(!isset($_SESSION['login_user'])){
                     	</center>
                     	<br>
                     	<br>
-                        <form class="form-basic" method="post" action="#">
+                        <form class="form-basic" method="post" action="updatedb.php">
 
             <div class="form-title-row">
                 <h1>Teachers Feedback</h1>
@@ -91,45 +129,39 @@ if(!isset($_SESSION['login_user'])){
             <div class="form-row">
                 <label>
                     <span>Full Name</span>
-                    <input type="text" name="name">
+                    <input type="text" name="name" value="<?php echo $name ?>"/>>
                 </label>
             </div>
 
             <div class="form-row">
                 <label>
                     <span>Registration No</span>
-                    <input type="text" name="registration no">
+                    <input type="text" name="registration-no" value="<?php echo $regno?>"/>>
                 </label>
             </div>
 
             <div class="form-row">
                 <label>
                     <span>Semester</span>
-                    <select name="dropdown">
-                        <option>I</option>
-                        <option>II</option>
-                        <option>III</option>
-                        <option>IV</option>
-                        <option>V</option>
-                        <option>VI</option>
-                        <option>VII</option>
-                        <option>VIII</option>
+                    <
+						                    <input type="text" name="dropdown" value="<?php echo $semester?>"/>>
+
                     </select>
                 </label>
             </div>
                 <div class="form-row">
                 <label>
                     <span>Branch</span>
-                    <input type="text" name="branch">
+                    <input type="text" name="branch" value="<?php echo $branch?>"/>>
                 </label>
             </div>
             <div class="form-row">
                 <label>
                     <span>Additional Remarks(if any):</span>
-                    <textarea name="remarks"></textarea>
+                    <textarea name="remarks" value="<?php echo $comments?>"/>></textarea>
                 </label>
             </div>
-
+    
             <div class="form-row">
             <table border="2" style="width:100%">
             <tr>
@@ -145,16 +177,15 @@ if(!isset($_SESSION['login_user'])){
 </TR>
 <TR>
 
+
 <TD>1. Punctuality in the Class</TD>
-<TD><input type="radio" size="10" align="Center"name="1a"></TD>
-<TD><input type="radio" name="2a"></TD>
-<TD><input type="radio" name="3a"></TD>
-<TD><input type="radio" name="4a"></TD>
-<TD><input type="radio" name="5a"></TD>
-</TR>
-<TR>
+<TD>1<input type="radio" size="10" align="Center"name="punctuality" value="1"></TD>
+<TD>2<input type="radio" name="punctuality" value="2"></TD>
+<TD>3<input type="radio" name="punctuality" value="3"></TD>
+<TD>4<input type="radio" name="punctuality" value= "4"></TD>
+<TD>5<input type="radio" name="punctuality" value="5"></TD><TR>
 <TD>2. Regularity in taking Classes</TD>
-<TD><input type="radio" size="10" align="Center"name="1b"></TD>
+<TD>1<input type="radio" size="10" align="Center"name="1b"></TD>
 <TD><input type="radio" name="2b"></TD>
 <TD><input type="radio" name="3b"></TD>
 <TD><input type="radio" name="4b"></TD>

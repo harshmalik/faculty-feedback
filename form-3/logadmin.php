@@ -1,5 +1,6 @@
 <?php
    session_start();
+
    include("config.php");
    
    
@@ -31,6 +32,7 @@
          $error = "Your Login Name or Password is invalid";
       }
    }
+   echo "$user_check";
 ?>
 
 <!DOCTYPE html>

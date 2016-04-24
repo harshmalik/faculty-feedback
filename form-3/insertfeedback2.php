@@ -1,6 +1,7 @@
 <?php
 session_start();
    include('config.php');
+   
 
 if(!isset($_SESSION['login_user'])){
       header("location:log.php");
@@ -44,7 +45,7 @@ if(!isset($_SESSION['login_user'])){
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
+                    <a href="logout.php">
                         Logout
                     </a>
                 </li>
@@ -129,7 +130,7 @@ if(!isset($_SESSION['login_user'])){
                     <textarea name="remarks"></textarea>
                 </label>
             </div>
-
+    
             <div class="form-row">
             <table border="2" style="width:100%">
             <tr>
