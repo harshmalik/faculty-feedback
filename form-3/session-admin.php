@@ -1,3 +1,12 @@
+<?php
+session_start();
+   include('config.php');
+
+
+if(!isset($_SESSION['login_user'])){
+      header("location:log.php");
+   }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +18,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <title>Homepage - DTU Faculty Feedback System</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -34,31 +43,26 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
-                        Start Bootstrap
+                    Hello Admin!
+                </li>
+                <li class="sidebar-brand">
+                    <a href="logout.php">
+                        Logout
                     </a>
                 </li>
+                <li>Feedback
+                <ul style="list-style-type:none">
                 <li>
-                    <a href="#">Dashboard</a>
+                    <a href="#">Departments</a>
                 </li>
                 <li>
-                    <a href="#">Shortcuts</a>
+                    <a href="#">Teacher</a>
                 </li>
                 <li>
-                    <a href="#">Overview</a>
+                    <a href="#">Delete</a>
+                </ul></li>
                 </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
+                
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -68,9 +72,18 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1>Simple Sidebar</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                    	<center>
+                        	<h1>DTU Faculty Feedback System</h1>
+                        	<header >
+   								
+   									<img src="DTU-logo.jpe" alt="logo" id="logo" title="Go to homepage"/>
+   								</a>
+   							</header
+                    	</center>
+                    	<br>
+                    	<br>
+                        <p>This is a portal for taking feedback from students about their academics, faculties and any issues which may plague the lives of any of the students in the University.</p>
+                        <br><br>
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                     </div>
                 </div>

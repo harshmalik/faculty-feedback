@@ -1,3 +1,12 @@
+<?php
+session_start();
+   include('config.php');
+
+if(!isset($_SESSION['login_user'])){
+      header("location:log.php");
+   }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +22,8 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/form-basic.css">
 
     <!-- Custom CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
@@ -34,6 +45,11 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
+                    Hi
+                    <?php  echo $_SESSION['login_user']; ?>!
+                    </a>
+                </li>
+                <li class="sidebar-brand">
                     <a href="#">
                         Logout
                     </a>
@@ -41,17 +57,17 @@
                 <li>Feedback
                 <ul style="list-style-type:none">
                 <li>
-                    <a href="Insert.html">Insert</a>
+                    <a href="Insertfeedback.php">Insert</a>
                 </li>
                 <li>
-                    <a href="Update.html">Update</a>
+                    <a href="updateFeedback.php">Update</a>
                 </li>
                 <li>
-                    <a href="Delete.html">Delete</a>
+                    <a href="DeleteFeedback.php">Delete</a>
                 </ul></li>
                 </li>
                 <li>
-                    <a href="Contact_Us.html">Contact</a>
+                    <a href="Contact_Us.php">Contact</a>
                 </li>
             </ul>
         </div>
@@ -65,15 +81,47 @@
                     	<center>
                         	<h1>DTU Feedback System</h1>
                         	<header >
-   								<a href="#a">
-   									<img src="DTU-logo.jpe" alt="logo" id="logo"/>
+   								<a href="session-student.php">
+   									<img src="DTU-logo.jpe" alt="logo" id="logo" title ="Go to homepage"/>
    								</a>
    							</header
                     	</center>
                     	<br>
                     	<br>
-                        <p>This is a portal for taking feedback from students about their academics, faculties and any issues which may plague the lives of any of the students in the University.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                        <form class="form-basic" method="post" action="#">
+
+            <div class="form-title-row">
+                <h1>Contact Us</h1>
+            </div>
+			 <div class="form-row">
+                <label>
+                    You may contact us at the following:  
+                </label>
+            </div> 
+            <div class="form-row">
+                <label>
+                    <span>Phone:</span><span>+91-11-27871018</span>       
+                </label>
+            </div>
+
+
+            <div class="form-row">
+                <label>
+                    <span>Fax:</span><span>+91-11-27871023</span> 
+                  
+                </label>
+            </div>
+				<div class="form-row">
+                <label>
+                    <span>Address:</span><span>Delhi Technological University,Shahbad Daulatpur,
+												Main Bawana Road, 
+												Delhi-110042<br>India</span> 
+   
+                </label>
+            </div>
+        </form>
+
+                       <br>
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                     </div>
                 </div>

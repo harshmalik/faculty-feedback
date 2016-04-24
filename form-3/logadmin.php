@@ -1,5 +1,6 @@
 <?php
    session_start();
+
    include("config.php");
    
    
@@ -31,6 +32,7 @@
          $error = "Your Login Name or Password is invalid";
       }
    }
+   
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +43,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap Login &amp; Register Templates</title>
+        <title>Administrator Login</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -76,14 +78,8 @@
                 	
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1>DTU Feedback System Login &amp; Register Forms</h1>
-                            <div class="description">
-                            	<p>
-	                            	This is a free responsive <strong>"login and register forms"</strong> template made with Bootstrap. 
-	                            	Download it on <a href="http://azmind.com" target="_blank"><strong>AZMIND</strong></a>, 
-	                            	customize and use it as you like!
-                            	</p>
-                            </div>
+                            <h1>DTU Feedback System </h1>
+                            
                         </div>
                     </div>
                     
@@ -93,8 +89,8 @@
                         	<div class="form-box">
 	                        	<div class="form-top">
 	                        		<div class="form-top-left">
-	                        			<h3>ADMIN site</h3>
-	                            		<p>Enter username and password to log on:</p>
+	                        			<h3>Administrator Login</h3>
+	                            		<p>Enter username and password:</p>
 	                        		</div>
 	                        		<div class="form-top-right">
 	                        			<i class="fa fa-key"></i>
@@ -110,7 +106,7 @@
 				                        	<label class="sr-only" for="form-password">Password</label>
 				                        	<input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
 				                        </div>
-				                        <button type="submit" class="btn">Sign in!</button>
+				                        <button type="submit" class="btn">Sign in</button>
 				                    </form>
 			                    </div>
 		                    </div>
@@ -133,7 +129,7 @@
         			
         			<div class="col-sm-8 col-sm-offset-2">
         				<div class="footer-border"></div>
-        				<p>Made by Anli Zaimi at <a href="http://azmind.com" target="_blank"><strong>AZMIND</strong></a> 
+        				<p>Made by WE3 at <a href="" target="_blank"><strong>HHH</strong></a> 
         					having a lot of fun. <i class="fa fa-smile-o"></i></p>
         			</div>
         			

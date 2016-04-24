@@ -2,6 +2,7 @@
 session_start();
    include('config.php');
 
+
 if(!isset($_SESSION['login_user'])){
       header("location:log.php");
    }
@@ -17,7 +18,7 @@ if(!isset($_SESSION['login_user'])){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <title>Homepage - DTU Faculty Feedback System</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -42,6 +43,11 @@ if(!isset($_SESSION['login_user'])){
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
+                    Hi
+                    <?php  echo $_SESSION['login_user']; ?>!
+                    </a>
+                </li>
+                <li class="sidebar-brand">
                     <a href="logout.php">
                         Logout
                     </a>
@@ -49,17 +55,17 @@ if(!isset($_SESSION['login_user'])){
                 <li>Feedback
                 <ul style="list-style-type:none">
                 <li>
-                    <a href="Insert.html">Insert</a>
+                    <a href="Insertfeedback.php">Insert</a>
                 </li>
                 <li>
-                    <a href="Update.html">Update</a>
+                    <a href="updateFeedback.php">Update</a>
                 </li>
                 <li>
-                    <a href="Delete.html">Delete</a>
+                    <a href="DeleteFeedback.php">Delete</a>
                 </ul></li>
                 </li>
                 <li>
-                    <a href="Contact_Us.html">Contact</a>
+                    <a href="Contact_Us.php">Contact</a>
                 </li>
             </ul>
         </div>
@@ -71,17 +77,17 @@ if(!isset($_SESSION['login_user'])){
                 <div class="row">
                     <div class="col-lg-12">
                     	<center>
-                        	<h1>DTU Feedback System</h1>
+                        	<h1>DTU Faculty Feedback System</h1>
                         	<header >
-   								<a href="#a">
-   									<img src="DTU-logo.jpe" alt="logo" id="logo"/>
+   								
+   									<img src="DTU-logo.jpe" alt="logo" id="logo" title="Go to homepage"/>
    								</a>
    							</header
                     	</center>
                     	<br>
                     	<br>
                         <p>This is a portal for taking feedback from students about their academics, faculties and any issues which may plague the lives of any of the students in the University.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                        <br><br>
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                     </div>
                 </div>
