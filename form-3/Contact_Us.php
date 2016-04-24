@@ -1,3 +1,12 @@
+<?php
+session_start();
+   include('config.php');
+
+if(!isset($_SESSION['login_user'])){
+      header("location:log.php");
+   }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +22,8 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/form-basic.css">
 
     <!-- Custom CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
@@ -34,30 +45,29 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
-                        Start Bootstrap
+                    Hi
+                    <?php  echo $_SESSION['login_user']; ?>!
                     </a>
                 </li>
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Logout
+                    </a>
+                </li>
+                <li>Feedback
+                <ul style="list-style-type:none">
                 <li>
-                    <a href="#">Dashboard</a>
+                    <a href="Insertfeedback.php">Insert</a>
                 </li>
                 <li>
-                    <a href="#">Shortcuts</a>
+                    <a href="updateFeedback.php">Update</a>
                 </li>
                 <li>
-                    <a href="#">Overview</a>
+                    <a href="DeleteFeedback.php">Delete</a>
+                </ul></li>
                 </li>
                 <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
+                    <a href="Contact_Us.php">Contact</a>
                 </li>
             </ul>
         </div>
@@ -68,9 +78,50 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1>Simple Sidebar</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                    	<center>
+                        	<h1>DTU Feedback System</h1>
+                        	<header >
+   								<a href="session-student.php">
+   									<img src="DTU-logo.jpe" alt="logo" id="logo" title ="Go to homepage"/>
+   								</a>
+   							</header
+                    	</center>
+                    	<br>
+                    	<br>
+                        <form class="form-basic" method="post" action="#">
+
+            <div class="form-title-row">
+                <h1>Contact Us</h1>
+            </div>
+			 <div class="form-row">
+                <label>
+                    You may contact us at the following:  
+                </label>
+            </div> 
+            <div class="form-row">
+                <label>
+                    <span>Phone:</span><span>+91-11-27871018</span>       
+                </label>
+            </div>
+
+
+            <div class="form-row">
+                <label>
+                    <span>Fax:</span><span>+91-11-27871023</span> 
+                  
+                </label>
+            </div>
+				<div class="form-row">
+                <label>
+                    <span>Address:</span><span>Delhi Technological University,Shahbad Daulatpur,
+												Main Bawana Road, 
+												Delhi-110042<br>India</span> 
+   
+                </label>
+            </div>
+        </form>
+
+                       <br>
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                     </div>
                 </div>

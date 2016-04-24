@@ -17,7 +17,7 @@ if(!isset($_SESSION['login_user'])){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <title>Insert Feedback</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -44,6 +44,11 @@ if(!isset($_SESSION['login_user'])){
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
+                    Hi
+                    <?php  echo $_SESSION['login_user']; ?>!
+                    </a>
+                </li>
+                <li class="sidebar-brand">
                     <a href="logout.php">
                         Logout
                     </a>
@@ -51,17 +56,17 @@ if(!isset($_SESSION['login_user'])){
                 <li>Feedback
                 <ul style="list-style-type:none">
                 <li>
-                    <a href="#">Insert</a>
+                    <a href="Insertfeedback.php">Insert</a>
                 </li>
                 <li>
-                    <a href="#">Update</a>
+                    <a href="updateFeedback.php">Update</a>
                 </li>
                 <li>
-                    <a href="#">Delete</a>
+                    <a href="DeleteFeedback.php">Delete</a>
                 </ul></li>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="Contact_Us.php">Contact</a>
                 </li>
             </ul>
         </div>
@@ -73,10 +78,10 @@ if(!isset($_SESSION['login_user'])){
                 <div class="row">
                     <div class="col-lg-12">
                     	<center>
-                        	<h1>DTU Feedback System</h1>
+                        	<h1>DTU Faculty Feedback System</h1>
                         	<header >
-   								<a href="Student_home_page.html">
-   									<img src="DTU-logo.jpe" alt="logo" id="logo"/>
+   								<a href="session-student.php">
+   									<img src="DTU-logo.jpe" alt="logo" id="logo" title ="Go to homepage"/>
    								</a>
    							</header
                     	</center>

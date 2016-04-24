@@ -1,3 +1,12 @@
+<?php
+session_start();
+   include('config.php');
+
+
+if(!isset($_SESSION['login_user'])){
+      header("location:log.php");
+   }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,12 +18,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <title>Homepage - DTU Faculty Feedback System</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    
-    <link rel="stylesheet" href="assets/form-basic.css">
 
     <!-- Custom CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
@@ -36,25 +43,26 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
+                    Hello Admin!
+                </li>
+                <li class="sidebar-brand">
+                    <a href="logout.php">
                         Logout
                     </a>
                 </li>
                 <li>Feedback
                 <ul style="list-style-type:none">
                 <li>
-                    <a href="#">Insert</a>
+                    <a href="#">Departments</a>
                 </li>
                 <li>
-                    <a href="#">Update</a>
+                    <a href="#">Teacher</a>
                 </li>
                 <li>
                     <a href="#">Delete</a>
                 </ul></li>
                 </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
+                
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -65,49 +73,25 @@
                 <div class="row">
                     <div class="col-lg-12">
                     	<center>
-                        	<h1>DTU Feedback System</h1>
+                        	<h1>DTU Faculty Feedback System</h1>
                         	<header >
-   								<a href="#a">
-   									<img src="DTU-logo.jpe" alt="logo" id="logo"/>
+   								
+   									<img src="DTU-logo.jpe" alt="logo" id="logo" title="Go to homepage"/>
    								</a>
    							</header
                     	</center>
                     	<br>
                     	<br>
-                        <form class="form-basic" method="post" action="#">
-
-            <div class="form-title-row">
-                <h1>Contact Us</h1>
-            </div>
-			 <div class="form-row">
-                <label>
-                    You may contact us at the following:  
-                </label>
-            </div> 
-            <div class="form-row">
-                <label>
-                    <span>Phone:</span><span>+91-11-27871018</span>       
-                </label>
-            </div>
-
-
-            <div class="form-row">
-                <label>
-                    <span>Fax:</span><span>+91-11-27871023</span> 
-                  
-                </label>
-            </div>
-				<div class="form-row">
-                <label>
-                    <span>Address:</span><span>Delhi Technological University,Shahbad Daulatpur,
-												Main Bawana Road, 
-												Delhi-110042.India</span> 
-   
-                </label>
-            </div>
-        </form>
-
-                       <br>
+<<<<<<< HEAD:form-3/session-admin.php
+                        <p>This is a portal for taking feedback from students about their academics, faculties and any issues which may plague the lives of any of the students in the University.</p>
+                        <br><br>
+=======
+                        <p>This feedback has been designed by Delhi University to seek a feedback from
+                            the student to strengthen the quality of teaching-learning environment and to look for
+                            opportunities to improve teacher’s performance in classroom engagement with students to
+                            bring excellence in teaching and learning.</p>
+                       
+>>>>>>> b98a29a934d7232412c516289bc754c8b3736072:form-3/Student_home_page.html
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                     </div>
                 </div>

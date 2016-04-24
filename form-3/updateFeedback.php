@@ -1,3 +1,11 @@
+<?php
+session_start();
+   include('config.php');
+
+if(!isset($_SESSION['login_user'])){
+      header("location:log.php");
+   }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,11 +17,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <title>Update Feedback</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="assets/form-basic.css">
 
     <!-- Custom CSS -->
@@ -36,24 +44,29 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
+                    Hi
+                    <?php  echo $_SESSION['login_user']; ?>!
+                    </a>
+                </li>
+                <li class="sidebar-brand">
+                    <a href="logout.php">
                         Logout
                     </a>
                 </li>
                 <li>Feedback
                 <ul style="list-style-type:none">
                 <li>
-                    <a href="#">Insert</a>
+                    <a href="Insertfeedback.php">Insert</a>
                 </li>
                 <li>
-                    <a href="#">Update</a>
+                    <a href="updateFeedback.php">Update</a>
                 </li>
                 <li>
-                    <a href="#">Delete</a>
+                    <a href="DeleteFeedback.php">Delete</a>
                 </ul></li>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="Contact_Us.php">Contact</a>
                 </li>
             </ul>
         </div>
@@ -65,88 +78,66 @@
                 <div class="row">
                     <div class="col-lg-12">
                     	<center>
-                        	<h1>DTU Feedback System</h1>
+                        	<h1>DTU Faculty Feedback System</h1>
                         	<header >
-   								<a href="Student_home_page.html">
-   									<img src="DTU-logo.jpe" alt="logo" id="logo"/>
+   								<a href="session-student.php">
+   									<img src="DTU-logo.jpe" alt="logo" id="logo" title ="Go to homepage"/>
    								</a>
    							</header
                     	</center>
                     	<br>
                     	<br>
-                        <form class="form-basic" method="post" action="#">
+                        <form class="form-basic" method="post" action="insertfeedbackdatabase.php">
 
             <div class="form-title-row">
-                <h1>Form Example</h1>
+                <h1>Update Teacher Feedback</h1>
             </div>
 
             <div class="form-row">
                 <label>
-                    <span>Full name</span>
+                    <span>Full Name</span>
                     <input type="text" name="name">
                 </label>
             </div>
 
             <div class="form-row">
                 <label>
-                    <span>Email</span>
-                    <input type="email" name="email">
+                    <span>Registration No</span>
+                    <input type="text" name="registration-no">
                 </label>
             </div>
 
             <div class="form-row">
                 <label>
-                    <span>Dropdown</span>
+                    <span>Semester</span>
                     <select name="dropdown">
-                        <option>Option One</option>
-                        <option>Option Two</option>
-                        <option>Option Three</option>
-                        <option>Option Four</option>
+                        <option>I</option>
+                        <option>II</option>
+                        <option>III</option>
+                        <option>IV</option>
+                        <option>V</option>
+                        <option>VI</option>
+                        <option>VII</option>
+                        <option>VIII</option>
                     </select>
                 </label>
             </div>
-
-            <div class="form-row">
+                <div class="form-row">
                 <label>
-                    <span>Textarea</span>
-                    <textarea name="textarea"></textarea>
+                    <span>Branch</span>
+                    <input type="text" name="branch">
                 </label>
             </div>
-
             <div class="form-row">
                 <label>
-                    <span>Checkbox</span>
-                    <input type="checkbox" name="checkbox" checked>
+                    <span>Additional Remarks(if any):</span>
+                    <textarea name="remarks"></textarea>
                 </label>
             </div>
+    
+            
 
-            <div class="form-row">
-                <label><span>Radio</span></label>
-                <div class="form-radio-buttons">
 
-                    <div>
-                        <label>
-                            <input type="radio" name="radio">
-                            <span>Radio option 1</span>
-                        </label>
-                    </div>
-
-                    <div>
-                        <label>
-                            <input type="radio" name="radio">
-                            <span>Radio option 2</span>
-                        </label>
-                    </div>
-
-                    <div>
-                        <label>
-                            <input type="radio" name="radio">
-                            <span>Radio option 3</span>
-                        </label>
-                    </div>
-
-                </div>
-            </div>
 
             <div class="form-row">
                 <button type="submit">Submit Form</button>
@@ -154,10 +145,10 @@
 
         </form>
 
-                        <p>This is a portal for taking feedback from students about their academics, faculties and any issues which may plague the lives of any of the students in the University.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                    </div>
+                    <br>   
+                    <center>  <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                   </center>
+				   </div>
                 </div>
             </div>
         </div>

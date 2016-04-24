@@ -42,7 +42,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap Login &amp; Register Templates</title>
+        <title>DTU Faculty Feedback System</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -77,7 +77,7 @@
                 	
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1>DTU Feedback System Login &amp; Register Forms</h1>
+                            <h1>DTU Faculty Feedback System</h1>
                             <div class="description">
                             	<p>
 	                            	 <strong>Login and Register forms</strong> 
@@ -94,8 +94,8 @@
                         	<div class="form-box">
 	                        	<div class="form-top">
 	                        		<div class="form-top-left">
-	                        			<h3>Login to our site</h3>
-	                            		<p>Enter username and password to log on:</p>
+	                        			<h3>Login</h3>
+	                            		<p>Enter username and password:</p>
 	                        		</div>
 	                        		<div class="form-top-right">
 	                        			<i class="fa fa-key"></i>
@@ -111,14 +111,14 @@
 				                        	<label class="sr-only" for="form-password">Password</label>
 				                        	<input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
 				                        </div>
-				                        <button type="submit" class="btn">Sign in!</button>
+				                        <button type="submit" class="btn">Sign in</button>
 				                    </form>
 			                    </div>
 		                    </div>
 		                <div class="social-login">
-	                        	<h3>...or login as:</h3>
+	                        	<h3>...OR</h3>
 	                        	
-		                 <a href="logadmin.php"> <button type="submit"  class="btn">Sign in As Admin!</button></a>
+		                 <a href="logadmin.php"> <button type="submit"  class="btn">Sign in As Administrator</button></a>
 
 		                        	
 	                        	
@@ -135,7 +135,7 @@
                         	<div class="form-box">
                         		<div class="form-top">
 	                        		<div class="form-top-left">
-	                        			<h3>Sign up now</h3>
+	                        			<h3>Sign Up</h3>
 	                            		<p>Fill in the form below to get instant access:</p>
 	                        		</div>
 	                        		<div class="form-top-right">
@@ -150,7 +150,7 @@
 				                        </div>
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="form-name">Name</label>
-				                        	<input type="text" name="form-name" placeholder="Name..." class="form-last-name form-control" id="form--name">
+				                        	<input type="text" name="form-name" placeholder="Username..." class="form-last-name form-control" id="form--name">
 				                        </div>
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="form-email">Email</label>
@@ -169,7 +169,7 @@
 				                        	<input type="password" name="form-pass" placeholder="PASSWORD..." class="form-email form-control" id="form-sem">
 				                        </div>
 				                       
-				                        <button type="submit" class="btn">Sign me up!</button>
+				                        <button type="submit" class="btn">Sign up</button>
 				                    </form>
 			                    </div>
                         	</div>
