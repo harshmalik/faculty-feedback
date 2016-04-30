@@ -1,7 +1,7 @@
 <?php
 session_start();
    include('config.php');
-echo $_SESSION['login_user'];
+
 
 
 if(!isset($_SESSION['login_user'])){
@@ -62,7 +62,7 @@ if(!isset($_SESSION['login_user'])){
                     <a href="updateFeedback.php">Update</a>
                 </li>
                 <li>
-                    <a href="DeleteFeedback.php">Delete</a>
+                    <a href="deletestep1.php">Delete</a>
                 </ul></li>
                 </li>
                 <li>

@@ -53,14 +53,13 @@ if(!isset($_SESSION['login_user'])){
                 <li>Feedback
                 <ul style="list-style-type:none">
                 <li>
-                    <a href="#">Departments</a>
+                    <a href="departmentadmin.php">Departments</a>
                 </li>
                 <li>
-                    <a href="#">Teacher</a>
+                    <a href="teacheradmin.php">Teacher</a>
                 </li>
                 <li>
-                    <a href="#">Delete</a>
-                </ul></li>
+                    <a href="Contact_Us.php">Contact</a>
                 </li>
                 
             </ul>
@@ -82,16 +81,14 @@ if(!isset($_SESSION['login_user'])){
                     	</center>
                     	<br>
                     	<br>
-<<<<<<< HEAD:form-3/session-admin.php
+
                         <p>This is a portal for taking feedback from students about their academics, faculties and any issues which may plague the lives of any of the students in the University.</p>
                         <br><br>
-=======
                         <p>This feedback has been designed by Delhi University to seek a feedback from
                             the student to strengthen the quality of teaching-learning environment and to look for
                             opportunities to improve teacher’s performance in classroom engagement with students to
                             bring excellence in teaching and learning.</p>
                        
->>>>>>> b98a29a934d7232412c516289bc754c8b3736072:form-3/Student_home_page.html
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                     </div>
                 </div>

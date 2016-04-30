@@ -93,12 +93,7 @@ if(!isset($_SESSION['login_user'])){
                 <h1>Teachers Feedback</h1>
             </div>
 
-            <div class="form-row">
-                <label>
-                    <span>Full Name</span>
-                    <input type="text" name="name">
-                </label>
-            </div>
+          
 
             <div class="form-row">
                 <label>
@@ -126,6 +121,26 @@ if(!isset($_SESSION['login_user'])){
                 <label>
                     <span>Branch</span>
                     <input type="text" name="branch">
+                </label>
+				            </div>
+ <div class="form-row">
+				 <label>
+                   <span>Department</span>
+                    <select name="dropdownlist">
+                        <option value="am">Applied Mathematics</option>
+                        <option value="ap">Applied Physics</option>
+                        <option value="bt">Bio Technology</option>
+                        <option value="ce">Civil</option>
+                        <option value="co">Computer</option>
+                        <option value="dsm">DSM</option>
+                        <option value="ece">ECE</option>
+                        <option value="ee">EE</option>
+						 <option value="hu">Humanities</option>
+                        <option value="me">Mechanical</option>
+						                    </select>
+
+                        
+
                 </label>
             </div>
             <div class="form-row">

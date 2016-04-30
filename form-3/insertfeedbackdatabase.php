@@ -1,11 +1,9 @@
 
 <?php
-/*
-Attempt MySQL server connection. Assuming you are running MySQL
-server with default setting (user 'root' with no password)
-*/
-$link = mysqli_connect("localhost", "root", "", "StudentAdmin");
-
+session_start();
+if(!isset($_SESSION['login_user'])){
+      header("location:log.php");
+   }
 
 /*
 Attempt MySQL server connection. Assuming you are running MySQL
@@ -18,32 +16,26 @@ if($link === false){
 }
  
 // Escape user inputs for security
-$name = mysqli_real_escape_string($link, $_POST['name']);
 $regno = mysqli_real_escape_string($link, $_POST['registration-no']);
 $semester = mysqli_real_escape_string($link, $_POST['dropdown']);
 $branch = mysqli_real_escape_string($link, $_POST['branch']);
+
+
+$department = mysqli_real_escape_string($link, $_POST['dropdownlist']);
 $comments = mysqli_real_escape_string($link, $_POST['remarks']);
 
+$user_check = $_SESSION['login_user'];
+
+
+
  
-// attempt insert query execution
-$sql = "INSERT INTO feedback (NAME,Registration_No,Semester, Branch, Comments) VALUES ('$name', '$regno','$semester','$branch','$comments')";
-if(mysqli_query($link, $sql)){
-echo '<script language="javascript">';
-echo 'alert("message successfully sent")';
-echo '</script>';
-
-
-    //header("location:Insertfeedback2.php");
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-}
  
 // close connection
 mysqli_close($link);
 
 
 ?>
-/*
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -126,10 +118,25 @@ mysqli_close($link);
                 <h1>Teachers Feedback</h1>
             </div>
 
-            <div class="form-row">
+            
+
+<div class="form-row">
                 <label>
-                    <span>Full Name</span>
-                    <input type="text" name="name" value="<?php echo $name ?>"/>>
+                    <span>Teacher Name</span>
+                    <select name="teacher">
+<?php 
+$link = mysqli_connect("localhost", "root", "", "StudentAdmin");
+$sql = mysqli_query($link,"SELECT name FROM $department");
+while ($row = mysqli_fetch_array($sql)){
+?>
+
+<option value="<?php echo $row['name']?>"><?php echo $row['name']; ?></option>
+
+<?php
+}
+?>
+</select>
+
                 </label>
             </div>
 
@@ -137,6 +144,12 @@ mysqli_close($link);
                 <label>
                     <span>Registration No</span>
                     <input type="text" name="registration-no" value="<?php echo $regno?>"/>>
+                </label>
+            </div>
+			<div class="form-row">
+                <label>
+                    <span>Department</span>
+                    <input type="text" name="department" value="<?php echo $department?>"/>>
                 </label>
             </div>
 
@@ -179,35 +192,35 @@ mysqli_close($link);
 
 
 <TD>1. Punctuality in the Class</TD>
-<TD>1<input type="radio" size="10" align="Center"name="punctuality" value="1"></TD>
-<TD>2<input type="radio" name="punctuality" value="2"></TD>
-<TD>3<input type="radio" name="punctuality" value="3"></TD>
-<TD>4<input type="radio" name="punctuality" value= "4"></TD>
-<TD>5<input type="radio" name="punctuality" value="5"></TD><TR>
+<TD><input type="radio" size="10" name="punctuality" value="1"></TD>
+<TD><input type="radio" name="punctuality" value="2"></TD>
+<TD><input type="radio" name="punctuality" value="3"></TD>
+<TD><input type="radio" name="punctuality" value= "4"></TD>
+<TD><input type="radio" name="punctuality" value="5"></TD><TR>
 <TD>2. Regularity in taking Classes</TD>
-<TD>1<input type="radio" size="10" align="Center"name="1b"></TD>
-<TD><input type="radio" name="2b"></TD>
-<TD><input type="radio" name="3b"></TD>
-<TD><input type="radio" name="4b"></TD>
-<TD><input type="radio" name="5b"></TD>
+<TD><input type="radio" size="10" name="Regularity" value="1"></TD>
+<TD><input type="radio" name="Regularity" value="2"></TD>
+<TD><input type="radio" name="Regularity" value="3"></TD>
+<TD><input type="radio" name="Regularity" value= "4"></TD>
+<TD><input type="radio" name="Regularity" value="5"></TD><TR>
 </TR>
 </TR>
 <TR>
 <TD>4. Completes syllabus of the course in time </TD>
-<TD><input type="radio" size="10" align="Center"name="1c"></TD>
-<TD><input type="radio" name="2c"></TD>
-<TD><input type="radio" name="3c"></TD>
-<TD><input type="radio" name="4c"></TD>
-<TD><input type="radio" name="5c"></TD>
+<TD><input type="radio" size="10" name="syllabus" value="1"></TD>
+<TD><input type="radio" name="syllabus" value="2"></TD>
+<TD><input type="radio" name="syllabus" value="3"></TD>
+<TD><input type="radio" name="syllabus" value= "4"></TD>
+<TD><input type="radio" name="syllabus" value="5"></TD><TR>
 </TR>
 </TR>
 <TR>
 <TD>5.Scheduled organization of assignments, class test, quizzes and seminars</TD>
-<TD><input type="radio" size="10" align="Center"name="1d"></TD>
-<TD><input type="radio" name="2d"></TD>
-<TD><input type="radio" name="3d"></TD>
-<TD><input type="radio" name="4d"></TD>
-<TD><input type="radio" name="5d"></TD>
+<TD><input type="radio" size="10" name="assignments" value="1"></TD>
+<TD><input type="radio" name="assignments" value="2"></TD>
+<TD><input type="radio" name="assignments" value="3"></TD>
+<TD><input type="radio" name="assignments" value= "4"></TD>
+<TD><input type="radio" name="assignments" value="5"></TD><TR>
 </TR>
 </TR>
 <TR>
@@ -215,38 +228,38 @@ mysqli_close($link);
 
 </TR>
 <TD>6. Focus on Syllabus</TD>
-<TD><input type="radio" size="10" align="Center"name="1e"></TD>
-<TD><input type="radio" name="2e"></TD>
-<TD><input type="radio" name="3e"></TD>
-<TD><input type="radio" name="4e"></TD>
-<TD><input type="radio" name="5e"></TD>
+<TD><input type="radio" size="10" name="Focus" value="1"></TD>
+<TD><input type="radio" name="Focus" value="2"></TD>
+<TD><input type="radio" name="Focus" value="3"></TD>
+<TD><input type="radio" name="Focus" value= "4"></TD>
+<TD><input type="radio" name="Focus" value="5"></TD><TR>
 </TR>
 </TR>
 <TR>
 <TD>7. Self-confidence</TD>
-<TD><input type="radio" size="10" align="Center"name="1f"></TD>
-<TD><input type="radio" name="2f"></TD>
-<TD><input type="radio" name="3f"></TD>
-<TD><input type="radio" name="4f"></TD>
-<TD><input type="radio" name="5f"></TD>
+<TD><input type="radio" size="10" name="confidence" value="1"></TD>
+<TD><input type="radio" name="confidence" value="2"></TD>
+<TD><input type="radio" name="confidence" value="3"></TD>
+<TD><input type="radio" name="confidence" value= "4"></TD>
+<TD><input type="radio" name="confidence" value="5"></TD><TR>
 </TR>
 </TR>
 <TR>
 <TD>8.Communication skills</TD>
-<TD><input type="radio" size="10" align="Center"name="1g"></TD>
-<TD><input type="radio" name="2g"></TD>
-<TD><input type="radio" name="3g"></TD>
-<TD><input type="radio" name="4g"></TD>
-<TD><input type="radio" name="5g"></TD>
+<TD><input type="radio" size="10" name="Communication" value="1"></TD>
+<TD><input type="radio" name="Communication" value="2"></TD>
+<TD><input type="radio" name="Communication" value="3"></TD>
+<TD><input type="radio" name="Communication" value= "4"></TD>
+<TD><input type="radio" name="Communication" value="5"></TD><TR>
 </TR>
 </TR>
 <TR>
 <TD>9.Conducting the classroom discussions</TD>
-<TD><input type="radio" size="10" align="Center"name="1h"></TD>
-<TD><input type="radio" name="2h"></TD>
-<TD><input type="radio" name="3h"></TD>
-<TD><input type="radio" name="4h"></TD>
-<TD><input type="radio" name="5h"></TD>
+<TD><input type="radio" size="10" name="discussions" value="1"></TD>
+<TD><input type="radio" name="discussions" value="2"></TD>
+<TD><input type="radio" name="discussions" value="3"></TD>
+<TD><input type="radio" name="discussions" value= "4"></TD>
+<TD><input type="radio" name="discussions" value="5"></TD><TR>
 </TR>
 </TR>
 <TR>
@@ -255,29 +268,29 @@ mysqli_close($link);
 
 </TR>
 <TD>10.Uses of teaching aids(OHP/Blackboard /PPT's)</TD>
-<TD><input type="radio" size="10" align="Center"name="1i"></TD>
-<TD><input type="radio" name="2i"></TD>
-<TD><input type="radio" name="3i"></TD>
-<TD><input type="radio" name="4i"></TD>
-<TD><input type="radio" name="5i"></TD>
+<TD><input type="radio" size="10" name="aids" value="1"></TD>
+<TD><input type="radio" name="aids" value="2"></TD>
+<TD><input type="radio" name="aids" value="3"></TD>
+<TD><input type="radio" name="aids" value= "4"></TD>
+<TD><input type="radio" name="aids" value="5"></TD><TR>
 </TR>
 </TR>
 <TR>
 <TD>11.Blackboard/Whiteboard work interms of legibility, visibility and structure</TD>
-<TD><input type="radio" size="10" align="Center"name="1j"></TD>
-<TD><input type="radio" name="2j"></TD>
-<TD><input type="radio" name="3j"></TD>
-<TD><input type="radio" name="4j"></TD>
-<TD><input type="radio" name="5j"></TD>
+<TD><input type="radio" size="10" name="structure" value="1"></TD>
+<TD><input type="radio" name="structure" value="2"></TD>
+<TD><input type="radio" name="structure" value="3"></TD>
+<TD><input type="radio" name="structure" value= "4"></TD>
+<TD><input type="radio" name="structure" value="5"></TD><TR>
 </TR>
 </TR>
 <TR>
 <TD>12.Uses of innovative teaching methods</TD>
-<TD><input type="radio" size="10" align="Center"name="1k"></TD>
-<TD><input type="radio" name="2k"></TD>
-<TD><input type="radio" name="3k"></TD>
-<TD><input type="radio" name="4k"></TD>
-<TD><input type="radio" name="5k"></TD>
+<TD><input type="radio" size="10" name="innovative" value="1"></TD>
+<TD><input type="radio" name="innovative" value="2"></TD>
+<TD><input type="radio" name="innovative" value="3"></TD>
+<TD><input type="radio" name="innovative" value= "4"></TD>
+<TD><input type="radio" name="innovative" value="5"></TD><TR>
 </TR>
 </TR>
 <TR>
@@ -285,38 +298,38 @@ mysqli_close($link);
 </TR>
 <TR>
 <TD>13.Regular checking of laboratory log books/ note books</TD>
-<TD><input type="radio" size="10" align="Center"name="1l"></TD>
-<TD><input type="radio" name="2l"></TD>
-<TD><input type="radio" name="3l"></TD>
-<TD><input type="radio" name="4l"></TD>
-<TD><input type="radio" name="5l"></TD>
+<TD><input type="radio" size="10" name="laboratory" value="1"></TD>
+<TD><input type="radio" name="laboratory" value="2"></TD>
+<TD><input type="radio" name="laboratory" value="3"></TD>
+<TD><input type="radio" name="laboratory" value= "4"></TD>
+<TD><input type="radio" name="laboratory" value="5"></TD><TR>
 </TR>
 </TR>
 <TR>
 <TD>14.Availability of teacher in the laboratory for whole duration of laboratory hours</TD>
-<TD><input type="radio" size="10" align="Center"name="1m"></TD>
-<TD><input type="radio" name="2m"></TD>
-<TD><input type="radio" name="3m"></TD>
-<TD><input type="radio" name="4m"></TD>
-<TD><input type="radio" name="5m"></TD>
+<TD><input type="radio" size="10" name="Availability" value="1"></TD>
+<TD><input type="radio" name="Availability" value="2"></TD>
+<TD><input type="radio" name="Availability" value="3"></TD>
+<TD><input type="radio" name="Availability" value= "4"></TD>
+<TD><input type="radio" name="Availability" value="5"></TD><TR>
 </TR>
 </TR>
 <TR>
 <TD>15.Helping the students in conducting experiments through set of instructions or demonstrations</TD>
-<TD><input type="radio" size="10" align="Center"name="1n"></TD>
-<TD><input type="radio" name="2n"></TD>
-<TD><input type="radio" name="3n"></TD>
-<TD><input type="radio" name="4n"></TD>
-<TD><input type="radio" name="5n"></TD>
+<TD><input type="radio" size="10" name="demonstrations" value="1"></TD>
+<TD><input type="radio" name="demonstrations" value="2"></TD>
+<TD><input type="radio" name="demonstrations" value="3"></TD>
+<TD><input type="radio" name="demonstrations" value= "4"></TD>
+<TD><input type="radio" name="demonstrations" value="5"></TD><TR>
 </TR>
 </TR>
 <TR>
 <TD>16.Helps students in exploring the area of study involved in the experiment</TD>
-<TD><input type="radio" size="10" align="Center"name="1o"></TD>
-<TD><input type="radio" name="2o"></TD>
-<TD><input type="radio" name="3o"></TD>
-<TD><input type="radio" name="4o"></TD>
-<TD><input type="radio" name="5o"></TD>
+<TD><input type="radio" size="10" name="experiment" value="1"></TD>
+<TD><input type="radio" name="experiment" value="2"></TD>
+<TD><input type="radio" name="experiment" value="3"></TD>
+<TD><input type="radio" name="experiment" value= "4"></TD>
+<TD><input type="radio" name="experiment" value="5"></TD><TR>
 </TR>
 </TR>
 

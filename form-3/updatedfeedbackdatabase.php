@@ -18,6 +18,17 @@ if($link === false){
 }
  
 // Escape user inputs for security
+$tname = mysqli_real_escape_string($link, $_POST['teacher']);
+$user= $_SESSION['login_user'];
+$sql="DELETE FROM feedback WHERE Teacher_Name='$tname' AND NAME='$user'";
+$result = mysqli_query($db,$sql);
+	  if (!$result) {
+    printf("Error: %s\n", mysqli_error($db));
+    exit();
+	
+	}
+ 
+// Escape user inputs for security
 $regno = mysqli_real_escape_string($link, $_POST['registration-no']);
 $semester = mysqli_real_escape_string($link, $_POST['dropdown']);
 $branch = mysqli_real_escape_string($link, $_POST['branch']);
@@ -89,3 +100,5 @@ mysqli_close($link);
 
 
 ?>
+
+}

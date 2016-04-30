@@ -5,6 +5,26 @@ session_start();
 if(!isset($_SESSION['login_user'])){
       header("location:log.php");
    }
+   $link = mysqli_connect("localhost", "root", "", "StudentAdmin");
+// Check connection
+if($link === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}
+ 
+// Escape user inputs for security
+
+
+$department = mysqli_real_escape_string($link, $_POST['dropdownlist']);
+
+
+
+         $_SESSION['department'] = $department;
+
+
+ 
+ 
+// close connection
+mysqli_close($link);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +37,7 @@ if(!isset($_SESSION['login_user'])){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Update Feedback</title>
+    <title>Teacher Feedback</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -44,9 +64,7 @@ if(!isset($_SESSION['login_user'])){
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    Hi
-                    <?php  echo $_SESSION['login_user']; ?>!
-                    </a>
+                    Hello Admin!
                 </li>
                 <li class="sidebar-brand">
                     <a href="logout.php">
@@ -56,18 +74,15 @@ if(!isset($_SESSION['login_user'])){
                 <li>Feedback
                 <ul style="list-style-type:none">
                 <li>
-                    <a href="Insertfeedback.php">Insert</a>
+                    <a href="departmentadmin.php">Departments</a>
                 </li>
                 <li>
-                    <a href="updateFeedback.php">Update</a>
+                    <a href="teacheradmin.php">Teacher</a>
                 </li>
                 <li>
-                    <a href="DeleteFeedback.php">Delete</a>
-                </ul></li>
+                    <a href="Contact_Us1.php">Contact</a>
                 </li>
-                <li>
-                    <a href="Contact_Us.php">Contact</a>
-                </li>
+                
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -87,27 +102,28 @@ if(!isset($_SESSION['login_user'])){
                     	</center>
                     	<br>
                     	<br>
-                        <form class="form-basic" method="post" action="updateFeedbackcontinue.php">
+                        <form class="form-basic" method="post" action="teacherresultstep1.php">
 
             <div class="form-title-row">
-                <h1>Update Teacher Feedback</h1>
+                <h1> Teacher Feedback Result</h1>
             </div>
 
             <div class="form-row">
                 <label>
-                    <span>Department</span>
-                    <select name="dropdownlist">
-                        <option value="am">Applied Mathematics</option>
-                        <option value="ap">Applied Physics</option>
-                        <option value="bt">Bio Technology</option>
-                        <option value="ce">Civil</option>
-                        <option value="co">Computer</option>
-                        <option value="dsm">DSM</option>
-                        <option value="ece">ECE</option>
-                        <option value="ee">EE</option>
-						 <option value="hu">Humanities</option>
-                        <option value="me">Mechanical</option>
-						                    </select>
+                    <span>Teacher Name</span>
+                    <select name="teacher">
+<?php 
+$link = mysqli_connect("localhost", "root", "", "StudentAdmin");
+$sql = mysqli_query($link,"SELECT name FROM $department");
+while ($row = mysqli_fetch_array($sql)){
+?>
+
+<option value="<?php echo $row['name']?>"><?php echo $row['name']; ?></option>
+
+<?php
+}
+?>
+</select>
                 </label>
             </div>
 

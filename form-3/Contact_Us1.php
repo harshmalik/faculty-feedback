@@ -6,6 +6,7 @@ if(!isset($_SESSION['login_user'])){
       header("location:log.php");
    }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,11 +18,11 @@ if(!isset($_SESSION['login_user'])){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Update Feedback</title>
+    <title>Simple Sidebar - Start Bootstrap Template</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+    
     <link rel="stylesheet" href="assets/form-basic.css">
 
     <!-- Custom CSS -->
@@ -42,11 +43,9 @@ if(!isset($_SESSION['login_user'])){
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
+           <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    Hi
-                    <?php  echo $_SESSION['login_user']; ?>!
-                    </a>
+                    Hello Admin!
                 </li>
                 <li class="sidebar-brand">
                     <a href="logout.php">
@@ -56,18 +55,15 @@ if(!isset($_SESSION['login_user'])){
                 <li>Feedback
                 <ul style="list-style-type:none">
                 <li>
-                    <a href="Insertfeedback.php">Insert</a>
+                    <a href="departmentadmin.php">Departments</a>
                 </li>
                 <li>
-                    <a href="updateFeedback.php">Update</a>
+                    <a href="teacheradmin.php">Teacher</a>
                 </li>
                 <li>
-                    <a href="DeleteFeedback.php">Delete</a>
-                </ul></li>
+                    <a href="Contact_Us1.php">Contact</a>
                 </li>
-                <li>
-                    <a href="Contact_Us.php">Contact</a>
-                </li>
+                
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -78,7 +74,7 @@ if(!isset($_SESSION['login_user'])){
                 <div class="row">
                     <div class="col-lg-12">
                     	<center>
-                        	<h1>DTU Faculty Feedback System</h1>
+                        	<h1>DTU Feedback System</h1>
                         	<header >
    								<a href="session-student.php">
    									<img src="DTU-logo.jpe" alt="logo" id="logo" title ="Go to homepage"/>
@@ -87,45 +83,42 @@ if(!isset($_SESSION['login_user'])){
                     	</center>
                     	<br>
                     	<br>
-                        <form class="form-basic" method="post" action="updateFeedbackcontinue.php">
+                        <form class="form-basic" method="post" action="#">
 
             <div class="form-title-row">
-                <h1>Update Teacher Feedback</h1>
+                <h1>Contact Us</h1>
             </div>
-
+			 <div class="form-row">
+                <label>
+                    You may contact us at the following:  
+                </label>
+            </div> 
             <div class="form-row">
                 <label>
-                    <span>Department</span>
-                    <select name="dropdownlist">
-                        <option value="am">Applied Mathematics</option>
-                        <option value="ap">Applied Physics</option>
-                        <option value="bt">Bio Technology</option>
-                        <option value="ce">Civil</option>
-                        <option value="co">Computer</option>
-                        <option value="dsm">DSM</option>
-                        <option value="ece">ECE</option>
-                        <option value="ee">EE</option>
-						 <option value="hu">Humanities</option>
-                        <option value="me">Mechanical</option>
-						                    </select>
+                    <span>Phone:</span><span>+91-11-27871018</span>       
                 </label>
             </div>
 
-           
-            
-
-
 
             <div class="form-row">
-                <button type="submit">Submit Form</button>
+                <label>
+                    <span>Fax:</span><span>+91-11-27871023</span> 
+                  
+                </label>
             </div>
-
+				<div class="form-row">
+                <label>
+                    <span>Address:</span><span>Delhi Technological University,Shahbad Daulatpur,
+												Main Bawana Road, 
+												Delhi-110042<br>India</span> 
+   
+                </label>
+            </div>
         </form>
 
-                    <br>   
-                    <center>  <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                   </center>
-				   </div>
+                       <br>
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                    </div>
                 </div>
             </div>
         </div>

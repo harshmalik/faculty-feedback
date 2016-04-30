@@ -5,8 +5,30 @@ session_start();
 if(!isset($_SESSION['login_user'])){
       header("location:log.php");
    }
+
+/*
+Attempt MySQL server connection. Assuming you are running MySQL
+server with default setting (user 'root' with no password)
+*/
+$link = mysqli_connect("localhost", "root", "", "StudentAdmin");
+// Check connection
+if($link === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}
+$department = mysqli_real_escape_string($link, $_POST['dropdownlist']);
+$user_check = $_SESSION['login_user'];
+$sql="SELECT avg((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O)/15) AS averages FROM feedback where Department='$department'";
+ $result = mysqli_query($db,$sql);
+ 
+ $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+ //print_r ($result);
+	  if (!$result) {
+    printf("Error: %s\n", mysqli_error($db));
+    exit();
+}
 ?>
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -17,12 +39,10 @@ if(!isset($_SESSION['login_user'])){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Update Feedback</title>
+    <title>Homepage - DTU Faculty Feedback System</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="assets/form-basic.css">
 
     <!-- Custom CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
@@ -44,9 +64,7 @@ if(!isset($_SESSION['login_user'])){
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    Hi
-                    <?php  echo $_SESSION['login_user']; ?>!
-                    </a>
+                    Hello Admin!
                 </li>
                 <li class="sidebar-brand">
                     <a href="logout.php">
@@ -56,18 +74,15 @@ if(!isset($_SESSION['login_user'])){
                 <li>Feedback
                 <ul style="list-style-type:none">
                 <li>
-                    <a href="Insertfeedback.php">Insert</a>
+                    <a href="departmentadmin.php">Departments</a>
                 </li>
                 <li>
-                    <a href="updateFeedback.php">Update</a>
+                    <a href="teacheradmin.php">Teacher</a>
                 </li>
                 <li>
-                    <a href="DeleteFeedback.php">Delete</a>
-                </ul></li>
+                    <a href="Contact_Us1.php">Contact</a>
                 </li>
-                <li>
-                    <a href="Contact_Us.php">Contact</a>
-                </li>
+                
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -80,52 +95,18 @@ if(!isset($_SESSION['login_user'])){
                     	<center>
                         	<h1>DTU Faculty Feedback System</h1>
                         	<header >
-   								<a href="session-student.php">
-   									<img src="DTU-logo.jpe" alt="logo" id="logo" title ="Go to homepage"/>
+   								
+   									<img src="DTU-logo.jpe" alt="logo" id="logo" title="Go to homepage"/>
    								</a>
    							</header
                     	</center>
                     	<br>
                     	<br>
-                        <form class="form-basic" method="post" action="updateFeedbackcontinue.php">
-
-            <div class="form-title-row">
-                <h1>Update Teacher Feedback</h1>
-            </div>
-
-            <div class="form-row">
-                <label>
-                    <span>Department</span>
-                    <select name="dropdownlist">
-                        <option value="am">Applied Mathematics</option>
-                        <option value="ap">Applied Physics</option>
-                        <option value="bt">Bio Technology</option>
-                        <option value="ce">Civil</option>
-                        <option value="co">Computer</option>
-                        <option value="dsm">DSM</option>
-                        <option value="ece">ECE</option>
-                        <option value="ee">EE</option>
-						 <option value="hu">Humanities</option>
-                        <option value="me">Mechanical</option>
-						                    </select>
-                </label>
-            </div>
-
-           
-            
-
-
-
-            <div class="form-row">
-                <button type="submit">Submit Form</button>
-            </div>
-
-        </form>
-
-                    <br>   
-                    <center>  <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                   </center>
-				   </div>
+                        <h1><?php echo $department ?></h1> 
+                        <h2>Department average rating-<?php print_r( $row['averages'])?></h2>
+                       
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -5,6 +5,26 @@ session_start();
 if(!isset($_SESSION['login_user'])){
       header("location:log.php");
    }
+   $link = mysqli_connect("localhost", "root", "", "StudentAdmin");
+// Check connection
+if($link === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}
+ 
+// Escape user inputs for security
+
+
+$department = mysqli_real_escape_string($link, $_POST['dropdownlist']);
+
+
+
+         $_SESSION['department'] = $department;
+
+
+ 
+ 
+// close connection
+mysqli_close($link);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,7 +107,7 @@ if(!isset($_SESSION['login_user'])){
                     	</center>
                     	<br>
                     	<br>
-                        <form class="form-basic" method="post" action="updateFeedbackcontinue.php">
+                        <form class="form-basic" method="post" action="delete.php">
 
             <div class="form-title-row">
                 <h1>Update Teacher Feedback</h1>
@@ -95,19 +115,20 @@ if(!isset($_SESSION['login_user'])){
 
             <div class="form-row">
                 <label>
-                    <span>Department</span>
-                    <select name="dropdownlist">
-                        <option value="am">Applied Mathematics</option>
-                        <option value="ap">Applied Physics</option>
-                        <option value="bt">Bio Technology</option>
-                        <option value="ce">Civil</option>
-                        <option value="co">Computer</option>
-                        <option value="dsm">DSM</option>
-                        <option value="ece">ECE</option>
-                        <option value="ee">EE</option>
-						 <option value="hu">Humanities</option>
-                        <option value="me">Mechanical</option>
-						                    </select>
+                    <span>Teacher Name</span>
+                    <select name="teacher">
+<?php 
+$link = mysqli_connect("localhost", "root", "", "StudentAdmin");
+$sql = mysqli_query($link,"SELECT name FROM $department");
+while ($row = mysqli_fetch_array($sql)){
+?>
+
+<option value="<?php echo $row['name']?>"><?php echo $row['name']; ?></option>
+
+<?php
+}
+?>
+</select>
                 </label>
             </div>
 

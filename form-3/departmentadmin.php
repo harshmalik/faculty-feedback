@@ -44,9 +44,7 @@ if(!isset($_SESSION['login_user'])){
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    Hi
-                    <?php  echo $_SESSION['login_user']; ?>!
-                    </a>
+                    Hello Admin!
                 </li>
                 <li class="sidebar-brand">
                     <a href="logout.php">
@@ -56,17 +54,14 @@ if(!isset($_SESSION['login_user'])){
                 <li>Feedback
                 <ul style="list-style-type:none">
                 <li>
-                    <a href="Insertfeedback.php">Insert</a>
+                    <a href="departmentadmin.php">Departments</a>
                 </li>
                 <li>
-                    <a href="updateFeedback.php">Update</a>
+                    <a href="teacheradmin.php">Teacher</a>
                 </li>
+               
                 <li>
-                    <a href="DeleteFeedback.php">Delete</a>
-                </ul></li>
-                </li>
-                <li>
-                    <a href="Contact_Us.php">Contact</a>
+                    <a href="Contact_Us1.php">Contact</a>
                 </li>
             </ul>
         </div>
@@ -87,10 +82,10 @@ if(!isset($_SESSION['login_user'])){
                     	</center>
                     	<br>
                     	<br>
-                        <form class="form-basic" method="post" action="updateFeedbackcontinue.php">
+                        <form class="form-basic" method="post" action="departmentfeedback.php">
 
             <div class="form-title-row">
-                <h1>Update Teacher Feedback</h1>
+                <h1>Department Feedback</h1>
             </div>
 
             <div class="form-row">

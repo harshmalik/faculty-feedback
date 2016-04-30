@@ -17,7 +17,7 @@ if(!isset($_SESSION['login_user'])){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Update Feedback</title>
+    <title>Delete Feedback</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -87,10 +87,10 @@ if(!isset($_SESSION['login_user'])){
                     	</center>
                     	<br>
                     	<br>
-                        <form class="form-basic" method="post" action="updateFeedbackcontinue.php">
+                        <form class="form-basic" method="post" action="deletestep2.php">
 
             <div class="form-title-row">
-                <h1>Update Teacher Feedback</h1>
+                <h1>Delete Teacher Feedback</h1>
             </div>
 
             <div class="form-row">
